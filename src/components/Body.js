@@ -65,7 +65,7 @@ const Body = () => {
           Search
         </button>
         {/**Following Input box is fun content, just to knwo power of react */}
-        <input
+        {/* <input
           type='text'
           className='bg-orange-50 p-2 m-5'
           value={user.name}
@@ -75,7 +75,7 @@ const Body = () => {
               name: e.target.value,
             })
           }
-        />
+        /> */}
       </div>
       <div className='flex flex-wrap'>
         {allRestaurants?.length === 0 ? (

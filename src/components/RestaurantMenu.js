@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { IMG_CDN_URL } from "../constants";
 import useRestaurant from "../utils/useRestaurant";
+import DishCard from "./DishCard";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
@@ -36,20 +37,8 @@ const RestaurantMenu = () => {
         <h1 className='text-xl font-bold'>Menu:</h1>
         <br />
         <ul>
-          {menuCard.map((item, index) => (
-            <div className='flex m-3' key={index}>
-              <div className='w-40 h-36'>
-                <img
-                  src={`${IMG_CDN_URL}${item.card.info.imageId}`}
-                  className='size-full'
-                />
-              </div>
-              <div>
-                <h2>{item.card.info.name}</h2>
-                <h2>{item.card.info.description}</h2>
-                <h2>Rs. {item.card.info.price / 100}</h2>
-              </div>
-            </div>
+          {menuCard.map((item) => (
+            <DishCard {...item.card.info} key={item.card.info.id} />
           ))}
         </ul>
       </div>

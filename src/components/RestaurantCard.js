@@ -22,9 +22,9 @@ const RestaurantCard = ({ cloudinaryImageId, name, cuisines, sla }) => {
         <h3 className='mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-md font-bold'>
           {cuisines.join(",")}
         </h3>
-        <p>
+        {/* <p>
           {user.name}-{user.email}
-        </p>
+        </p> */}
       </div>
     </div>
   );

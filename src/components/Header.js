@@ -2,12 +2,15 @@ import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import { useState, useContext } from "react";
 import UserContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const isOnline = useOnline();
   const [loggedIn, setLoggedIn] = useState(false);
 
   const { user } = useContext(UserContext);
+
+  const cartItems = useSelector((store) => store.cart.items); // this says subscribe me to the store.cart slice so that whenever it gets updated this varible also should update
 
   return (
     <div className='flex justify-between bg-orange-400 text-white'>
@@ -30,10 +33,10 @@ const Header = () => {
             <Link to='/contact'>Contact</Link>
           </li>
           <li className='mx-3'>
-            <Link to='/cart'>Cart</Link>
+            <Link to='/instamart'>Instamart</Link>
           </li>
           <li className='mx-3'>
-            <Link to='/instamart'>Instamart</Link>
+            <Link to='/cart'>Cart - {cartItems.length} items</Link>
           </li>
         </ul>
       </div>
