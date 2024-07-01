@@ -53,13 +53,11 @@ const Header = () => {
       </div>
       <div className='py-4 flex'>
         {loggedUser && (
-          <>
-            <p className='font-bold text-blue-950 mr-3'>Hi, {loggedUser}</p>
-            <p className='font-bold cursor-pointer mx-3' onClick={handleLogout}>
-              Logout
-            </p>
-          </>
+          <p className='font-bold text-blue-950 mr-3'>Hi, {loggedUser}</p>
         )}
+        <p className='font-bold cursor-pointer mx-3' onClick={handleLogout}>
+          {loggedUser ? "Logout" : "Login"}
+        </p>
       </div>
     </div>
   );
