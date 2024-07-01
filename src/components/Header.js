@@ -1,16 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import { useState, useContext } from "react";
 import UserContext from "../utils/userContext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeUser } from "../utils/userSlice";
 
 const Header = () => {
   const isOnline = useOnline();
-  const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { user } = useContext(UserContext);
 
+  const loggedUser = useSelector((store) => store.user.user.username);
   const cartItems = useSelector((store) => store.cart.items); // this says subscribe me to the store.cart slice so that whenever it gets updated this varible also should update
+
+  const handleLogout = () => {
+    dispatch(removeUser());
+
+    navigate("/login");
+  };
 
   return (
     <div className='flex justify-between bg-orange-400 text-white'>
@@ -35,19 +44,22 @@ const Header = () => {
           <li className='mx-3'>
             <Link to='/instamart'>Instamart</Link>
           </li>
-          <li className='mx-3'>
-            <Link to='/cart'>Cart - {cartItems.length} items</Link>
-          </li>
+          {loggedUser && (
+            <li className='mx-3'>
+              <Link to='/cart'>Cart - {cartItems.length} items</Link>
+            </li>
+          )}
         </ul>
       </div>
       <div className='py-4 flex'>
-        {loggedIn && <p className='font-bold text-blue-950'>Hi, {user.name}</p>}
-        <p
-          className='font-bold cursor-pointer mx-3'
-          onClick={() => setLoggedIn((prev) => !prev)}
-        >
-          {loggedIn ? "Logout" : "Login"}
-        </p>
+        {loggedUser && (
+          <>
+            <p className='font-bold text-blue-950 mr-3'>Hi, {loggedUser}</p>
+            <p className='font-bold cursor-pointer mx-3' onClick={handleLogout}>
+              Logout
+            </p>
+          </>
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 const ContactUs = () => {
   return (
-    <div>
-      <h1>Contact us page!</h1>
+    <div className='flex justify-center my-10'>
+      <h1 className='text-3xl font-bold'>Contact us</h1>
     </div>
   );
 };
