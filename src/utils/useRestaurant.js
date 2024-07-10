@@ -16,10 +16,7 @@ const useRestaurant = (id) => {
 
     const menuList =
       data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards ??
-      data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card
-        ?.card?.itemCards ??
-      [];
+        ?.card?.itemCards ?? [];
 
     const menu = new Array();
 

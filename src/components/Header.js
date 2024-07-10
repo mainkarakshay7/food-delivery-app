@@ -32,7 +32,7 @@ const Header = () => {
       <div>
         <ul className='flex justify-between py-4 font-bold'>
           <li className='mx-3'>
-            <Link to='/home'>Home</Link>
+            <Link to='/'>Home</Link>
           </li>
           <li className='mx-3'>
             <Link to='/about'>About </Link>
